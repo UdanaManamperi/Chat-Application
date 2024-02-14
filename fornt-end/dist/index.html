@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatterbox</title>
+    <link rel="shortcut icon" href="/chat.a637d961.png" type="image/x-icon">
+    <link rel="stylesheet" href="/index.ab0485ab.css">
+    <link rel="module" href="/bootstrap.min.fd40e163.js">
+    <link rel="stylesheet" href="/index.5af28429.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.34df27b5.css">
+    <script src="/index.18dbc454.js" defer=""></script>
+
+
+
+</head>
+<body class="d-flex flex-column vh-100" data-bs-theme="light">
+  <header>
+    <div class="p-2 px-5 text-center border-bottom d-flex justify-content-between">
+      <h1><i class="bi bi-chat-dots"></i> Chatterbox Chat App</h1>
+      <div class="d-flex align-items-center gap-5">
+        <div class="d-flex align-items-center gap-2">
+          <label>Light</label>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Dark</label>
+          </div>
+        </div>
+        <div id="account">
+          <div id="account-details" class="d-none">
+            <div id="user-name">Name</div>
+            <div id="user-email">Email</div>
+            <div id="btn-sign-out">Sign Out</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="flex-grow-1 d-flex flex-column">
+    <div id="output-wrapper" class="border flex-grow-1 pb-2 px-5">
+      <div id="output" class="p-2 h-100"></div>
+    </div>
+      <form action="javascript:void(0)" class="border-top d-flex gap-2 p-2 px-5">
+      <input class="form-control" id="txt-message" type="text" placeholder="Eg. Hello Guys!">
+          <button class="btn btn-primary d-flex gap-2" id="btn-send">
+              Send<i class="bi bi-send-fill"></i>
+          </button>
+
+    </form>
+  </main>
+
+
+
+</body>
+</html> 
