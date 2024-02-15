@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider,  onAuthStateChanged,signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../firebase.js";
 const provider = new GoogleAuthProvider;
 
@@ -92,7 +92,7 @@ btnSendElm.addEventListener('click', () => {
 function addChatMessageRecord({ message, email }) {
     const messageElm = document.createElement("div");
     messageElm.classList.add("message");
-    outputElm.append(messageElm);
+
     if (email === user.email) {
         messageElm.classList.add("me");
     } else {
@@ -116,6 +116,21 @@ btnSignInElm.addEventListener("click", () => {
         })
         .catch(err => alert("Failed to login, try again later!"))
 })
+onAuthStateChanged(auth, loggedUser => {
+    if (loggedUser) {
+        user.email = loggedUser.email;
+        user.name = loggedUser.displayName;
+        user.picture = loggedUser.photoURL;
+        finalizeLogin();
+        loginOverlayElm.classList.add("d-none");
+    } else {
+        user.email = null;
+        user.name = null;
+        user.picture = null;
+        loginOverlayElm.classList.remove("d-none");
+    }
+})
+
 
 function finalizeLogin() {
     userNameElm.innerText = user.name;
@@ -137,3 +152,17 @@ btnSignOutElm.addEventListener("click", (e) => {
 document.addEventListener("click", () => {
     accountElm.querySelector("#account-details").classList.add("d-none");
 })
+
+function loadAllMessages() {
+    fetch(`${API_BASE_URL / messages}`)
+        .then(req => req.json())
+        .then(chatMessage => {
+            Array.from(outputElm.children).forEach(child => child.remove());
+            chatMessage.forEach(msg => addChatMessageRecord(msg));
+        })
+        .catch(err => console.log(err));
+}
+
+setInterval(loadAllMessages, 1000);
+
+loadAllMessages();
