@@ -4,12 +4,6 @@
   font-family: 'Roboto', system-ui, 'sans-serif';
 }
 
-#account {
-    width: 50px;
-    height: 50px;
-    background-color: red;
-}
-
 .gsi-material-button {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -138,6 +132,29 @@ main, #output-wrapper {
   position: relative;
 }
 
+.message.me {
+  align-self: flex-end;
+  background-color: rgb(208, 242, 255);
+}
+
+.message.others {
+  background-color: lightgray;
+}
+.message.me.dark-mode {
+  background-color:rgb(15, 85, 223) ;
+}
+.message.others.dark-mode {
+  background-color: rgb(102, 104, 104)
+}
+#login-overlay {
+  background-color: rgba(0, 0, 0, 0.742);
+  /* background-image: url("https://www.shutterstock.com/image-vector/social-media-sketch-vector-seamless-600nw-1660950727.jpg"); */
+  background-image: url(/src/img/background.jpeg);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
 
 #login-overlay {
   background-color: rgba(0, 0, 0, 0.742);
@@ -155,4 +172,26 @@ main, #output-wrapper {
   border-radius: 20px;
   background: transparent;
   backdrop-filter: blur(5px);
+}
+#account {
+  width: 60px;
+  height: 60px;
+  align-self: center;
+  border-radius: 50%;
+  background-size: contain;
+  cursor: pointer;
+  position: relative;
+}
+
+#account-details {
+  position: absolute;
+  width: 200px;
+  right: 0;
+  top: calc(100%+ 2px);
+  border-radius: 10px;
+  border: 1px solid darkgray;
+  background-color: white;
+  text-align: right;
+  padding: 10px;
+  z-index: 9999;
 }
