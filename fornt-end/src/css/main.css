@@ -132,9 +132,34 @@ main, #output-wrapper {
   position: relative;
 }
 
+.name {
+  color: rgb(18, 140, 126);
+  width: fit-content;
+  padding: 0px 10px;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.picture {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-size: contain;
+  position: relative;
+}
+
+.message-container {
+  padding: 10px;
+}
+
+
+
 .message.me {
   align-self: flex-end;
-  background-color: rgb(208, 242, 255);
+  /* background-color: rgb(126, 241, 168); */
+  background-color: #DCF8C6;
 }
 .message.others::after{
   position: absolute;
@@ -157,7 +182,7 @@ main, #output-wrapper {
   height: 0;
   width: 5px;
   border-top: 5px solid transparent;
-  border-left: 5px solid rgb(208, 242, 255);
+  border-left: 5px solid #DCF8C6;
   border-bottom: 5px solid transparent;
   right: 0;
   top: 50%;
@@ -169,11 +194,11 @@ main, #output-wrapper {
   background-color: lightgray;
 }
 .message.me.dark-mode {
-  background-color:rgb(15, 85, 223) ;
+  background-color:rgb(18, 140, 126) ;
 }
 
 .message.me.dark-mode::after {
-  border-left: 5px solid rgb(15, 85, 223);
+  border-left: 5px solid rgb(18, 140, 126);
 }
 
 
@@ -186,7 +211,7 @@ main, #output-wrapper {
 }
 #login-overlay {
   background-color: rgba(0, 0, 0, 0.742);
-  /* background-image: url("https://www.shutterstock.com/image-vector/social-media-sketch-vector-seamless-600nw-1660950727.jpg"); */
+
   background-image: url(/src/img/background.jpeg);
   position: fixed;
   left: 0;

@@ -60,7 +60,9 @@ btnSendElm.addEventListener('click', () => {
 
     const myObj = {
         message,
-        email: user.email
+        email: user.email,
+        name: user.name,
+        picture: user.picture
     }
 
     ws.send(JSON.stringify(myObj));
@@ -91,21 +93,40 @@ btnSendElm.addEventListener('click', () => {
     // })
 })
 
-function addChatMessageRecord({ message, email }) {
+function addChatMessageRecord({ message, email, name, picture  }) {
+    const pictureElm = document.createElement("div");
     const messageElm = document.createElement("div");
-    messageElm.classList.add("message");
+    const messageElm2 = document.createElement("div");
+    const nameElm = document.createElement("div");
+    const containerElm = document.createElement("div");
+
+    containerElm.classList.add("d-flex");
+
+    if (element.dataset.bsTheme === "dark") {
+        messageElm.classList.add("dark-mode");
+        messageElm2.classList.add("dark-mode");
+    }
 
     if (email === user.email) {
         messageElm.classList.add("me");
+        messageElm.innerText = message;
+        messageElm.classList.add("message");
     } else {
-        messageElm.classList.add("others");
+        pictureElm.style.backgroundImage = `url(${picture})`;
+        pictureElm.classList.add("picture");
+        messageElm2.classList.add("others");
+        messageElm2.classList.add("message");
+        nameElm.classList.add("name");
+        nameElm.innerText = name;
+        messageElm2.innerText = message;
     }
-    if (element.dataset.bsTheme === "dark") {
-        messageElm.classList.add("dark-mode");
-    }
+
+    containerElm.appendChild(pictureElm);
+    containerElm.appendChild(messageElm2);
     outputElm.append(messageElm);
-    messageElm.innerText = message;
-    console.log("message: ", message);
+    outputElm.append(nameElm);
+    outputElm.appendChild(containerElm);
+
 }
 btnSignInElm.addEventListener("click", () => {
     signInWithPopup(auth, provider)
@@ -186,5 +207,10 @@ document.addEventListener("click", () => {
 
 function loadNewChatMessages(e) {
     const msg = JSON.parse(e.data);
-    addChatMessageRecord(msg);
+    addChatMessageRecord({
+        message: msg.message,
+        email: msg.email,
+        name: msg.name,
+        picture: msg.picture,
+    });
 }
