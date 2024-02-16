@@ -15,6 +15,7 @@ const accountElm = document.querySelector("#account");
 const userNameElm = document.querySelector("#user-name");
 const userEmailElm = document.querySelector("#user-email");
 const btnSignOutElm = document.querySelector("#btn-sign-out");
+const loaderElm = document.querySelector("#loader");
 const { API_BASE_URL } = process.env;
 
 const user = {
@@ -141,6 +142,7 @@ btnSignInElm.addEventListener("click", () => {
         .catch(err => alert("Failed to login, try again later!"))
 })
 onAuthStateChanged(auth, loggedUser => {
+    loaderElm.classList.add("d-none");
     if (loggedUser) {
         user.email = loggedUser.email;
         user.name = loggedUser.displayName;
